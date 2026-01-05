@@ -1,52 +1,52 @@
-# Uncertainty 
+# Uncertainty / Pseudo-Labeling Project
 
-Table of contents
-- Project overview
-- Repository layout
-- Requirements & installation
-- Configuration (config.yaml)
-- Data preparation
-- Scripts and how to run them
-  - 1_local_global_pred.py (combined)
-  - 2_local_pred.py (local propagation)
-  - 3_global_pred.py (global prototypes)
-  - 4_local_global.py (original combined loss loader)
-  - 5_local_nystrom.py (Nyström local variant)
-- Losses and pseudo-label flow
-- Logs, outputs and results recording
-- Experiments and recommended workflow
-- Reproducibility tips
-- Troubleshooting
-- Git workflow
+Summary
+- Implementation of a 3-phase semi‑supervised pipeline for CIFAR-10: supervised warmup, pseudo‑label generation (global prototypes + local propagation / Nyström), and semi‑supervised fine‑tuning using agreed pseudo‑labels.
 
-Project overview
-This repository implements a 3-phase semi-supervised training pipeline for CIFAR-10:
-1. Phase 1 — Supervised warmup on labeled data (CE + KLD labeled loss).
-2. Phase 2 — Accumulate embeddings and generate pseudo-labels:
-   - Global pseudo-labels via class prototypes (mean embeddings).
-   - Local pseudo-labels via label propagation / Nyström approximation.
-3. Phase 3 — Semi-supervised training using unlabeled samples whose local and global pseudo-labels agree (KLD unlabeled loss).
+Key files (repo content)
+- Scripts:
+  - 1_local_global_pred.py
+  - 2_local_pred.py
+  - 3_global_pred.py
+  - 4_local_global.py
+  - 5_local_nystrom.py
+- Utilities / support:
+  - loader.py
+  - model/ (ResNet implementations)
+  - utils.py
+  - metrics.py
+  - loss_local_global.py
+  - loss.py
+  - config.yaml
 
-Repository layout
-- 1_local_global_pred.py — main combined pipeline (original).
-- 2_local_pred.py — local-only variant (propagation).
-- 3_global_pred.py — global-only variant (prototype-based).
-- 4_local_global.py — combined pipeline (alternate/updated).
-- 5_local_nystrom.py — local propagation using Nyström approximation.
-- loss*.py — loss implementations (compute_kld_labeled, compute_kld_unlabeled).
-- loader.py — dataset utilities (cifar10_dataset_labeled/unlabeled).
-- model/ — model definitions (ResNet variants).
-- utils.py, metrics.py — helpers & evaluation metrics.
-- config.yaml — global experiment configuration.
-- experiments/ — place to store logs & results summaries.
+Do you need a Table of Contents?
+- Not necessary right now: the repo is small and file names are clear.
+- Add a TOC only if you expand README with many sections (experiments, multiple examples, long troubleshooting). A short file list is sufficient.
 
-Requirements & installation
-- Python 3.8+
-- PyTorch (compatible with your CUDA version)
-- torchvision
-- numpy
-- scikit-learn
-- pyyaml
+Quick start
+1. Create environment:
+   python -m venv venv
+   source venv/bin/activate
+   pip install torch torchvision numpy scikit-learn pyyaml pillow
+2. Edit `config.yaml` (paths, label_size, warmup_epochs, k_neighbors, alpha_propagation, confidence_high, n_landmarks, gpus, save_folder).
+3. Prepare data as expected by loader.py (place .npy arrays in ./cifar10_data/).
+4. Run a script:
+   - python 1_local_global_pred.py
+   - or choose variants: python 2_local_pred.py / 3_global_pred.py / 5_local_nystrom.py
+
+What to record after a run
+- Save train.log, result.log, and the used config.yaml to a folder under `experiments/<run-id>/`.
+- Populate `experiments/results.md` with summarized metrics (Accuracy, AURC, E-AURC, AUPR, FPR95, ECE, NLL, Brier), config used, and commands.
+
+Recommended minimal README additions (optional)
+- Example command lines per script.
+- Short explanation of loss functions (compute_kld_labeled, compute_kld_unlabeled).
+- How to reproduce a run (seed, GPU env var, config snapshot).
+
+If you want, I can:
+- Add short example command lines per script into this README.
+- Generate an experiments/README template for recording runs.
+- Insert a one-line table of contents — tell me which option you prefer.
 - pillow
 
 Example install:
