@@ -1,0 +1,19 @@
+seed: 42
+save_folder: "temp/output"
+gpus: "0"
+label_size: 5000
+
+# training settings
+warmup_epochs: 1
+k_neighbors: 70
+n_landmarks: 500
+alpha_propagation: 0.5
+confidence_high: 0.9
+
+# unlabeled data
+unlabeled_limit: null   # None for full dataset
+
+# batch sizes
+batch_size_labeled: 32
+batch_size_unlabeled: 32
+batch_size_test: 128
