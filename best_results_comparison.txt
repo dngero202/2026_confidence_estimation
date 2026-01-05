@@ -1,0 +1,210 @@
+================================================================================
+BEST RESULTS ACROSS ALL EPOCHS
+================================================================================
+
+Metric Performance Guide:
+  ↑ Higher is Better: Accuracy
+  ↓ Lower is Better: AURC, E-AURC, AUPR, FPR-95, ECE, NLL, Brier
+================================================================================
+
+Accuracy (%) (Best across all epochs):
+--------------------------------------------------------------------------------
+Model                            Best Epoch        Value   Symbol
+--------------------------------------------------------------------------------
+Local Train                             295        85.05        ↑
+Global Train                            300        84.61        ↑
+Local Global                            279        85.50        ↑
+Local Nystrom                           294        85.84        ↑
+Local Global Results(loss changed)      294        85.84        ↑
+
+>>> BEST:                      Local Nystrom (Epoch 294: 85.84)
+
+AURC (Best across all epochs):
+--------------------------------------------------------------------------------
+Model                            Best Epoch        Value   Symbol
+--------------------------------------------------------------------------------
+Local Train                             190        41.73        ↓
+Global Train                            217        46.44        ↓
+Local Global                            155        42.99        ↓
+Local Nystrom                           215        43.90        ↓
+Local Global Results(loss changed)      190        41.73        ↓
+
+>>> BEST:                      Training Output (Epoch 190: 41.73)
+
+E-AURC (Best across all epochs):
+--------------------------------------------------------------------------------
+Model                            Best Epoch        Value   Symbol
+--------------------------------------------------------------------------------
+Local Train                             190        28.26        ↓
+Global Train                            230        30.12        ↓
+Local Global                            155        30.44        ↓
+Local Nystrom                           215        31.46        ↓
+Local Global Results(loss changed)      190        28.26        ↓
+
+>>> BEST:                      Training Output (Epoch 190: 28.26)
+
+AUPR (Best across all epochs):
+--------------------------------------------------------------------------------
+Model                            Best Epoch        Value   Symbol
+--------------------------------------------------------------------------------
+Local Train                             229        48.10        ↓
+Global Train                            300        47.75        ↓
+Local Global                            300        41.56        ↓
+Local Nystrom                           294        40.97        ↓
+Local Global Results(loss changed)      294        40.97        ↓
+
+>>> BEST:                      Local Global Results (Epoch 294: 40.97)
+
+FPR-95 (Best across all epochs):
+--------------------------------------------------------------------------------
+Model                            Best Epoch        Value   Symbol
+--------------------------------------------------------------------------------
+Local Train                             261        58.89        ↓
+Global Train                            286        59.78        ↓
+Local Global                            163        59.71        ↓
+Local Nystrom                           201        60.60        ↓
+Local Global Results(loss changed)      261        58.89        ↓
+
+>>> BEST:                      Local Global Results (Epoch 261: 58.89)
+
+ECE (Best across all epochs):
+--------------------------------------------------------------------------------
+Model                            Best Epoch        Value   Symbol
+--------------------------------------------------------------------------------
+Local Train                              89         2.28        ↓
+Global Train                            133         3.46        ↓
+Local Global                             58         1.88        ↓
+Local Nystrom                            89         2.63        ↓
+Local Global Results(loss changed)       58         1.88        ↓
+
+>>> BEST:                      Local Global (Epoch 58: 1.88)
+
+NLL (Best across all epochs):
+--------------------------------------------------------------------------------
+Model                            Best Epoch        Value   Symbol
+--------------------------------------------------------------------------------
+Local Train                             259         6.45        ↓
+Global Train                            293         6.71        ↓
+Local Global                            163         5.50        ↓
+Local Nystrom                           154         5.42        ↓
+Local Global Results(loss changed)      154         5.42        ↓
+
+>>> BEST:                      Local Nystrom (Epoch 154: 5.42)
+
+Brier (Best across all epochs):
+--------------------------------------------------------------------------------
+Model                            Best Epoch        Value   Symbol
+--------------------------------------------------------------------------------
+Local Train                             259        24.51        ↓
+Global Train                            293        25.50        ↓
+Local Global                            163        23.00        ↓
+Local Nystrom                           158        22.80        ↓
+Local Global Results(loss changed)      158        22.80        ↓
+
+>>> BEST:                      Local Nystrom (Epoch 158: 22.80)
+
+================================================================================
+OVERALL SUMMARY
+================================================================================
+
+Number of metrics where each model is best:
+  Local Nystrom: 3 metrics
+  Training Output: 2 metrics
+  Local Global Results: 2 metrics
+  Local Global: 1 metrics
+
+================================================================================
+COMPLETE BEST RESULTS FOR EACH MODEL
+================================================================================
+
+Local Train:
+------------------------------------------------------------
+Best Accuracy: Epoch 295
+  Accuracy: 85.05%
+  AURC: 49.10
+  E-AURC: 37.32
+  AUPR: 48.60
+  FPR-95: 63.61
+  ECE: 5.73
+  NLL: 6.56
+  Brier: 24.77
+
+Global Train:
+------------------------------------------------------------
+Best Accuracy: Epoch 300
+  Accuracy: 84.61%
+  AURC: 52.55
+  E-AURC: 40.05
+  AUPR: 47.75
+  FPR-95: 66.60
+  ECE: 6.22
+  NLL: 6.72
+  Brier: 25.52
+
+Local Global:
+------------------------------------------------------------
+Best Accuracy: Epoch 279
+  Accuracy: 85.50%
+  AURC: 75.04
+  E-AURC: 63.98
+  AUPR: 43.32
+  FPR-95: 65.17
+  ECE: 2.92
+  NLL: 6.10
+  Brier: 24.24
+
+Local Nystrom:
+------------------------------------------------------------
+Best Accuracy: Epoch 294
+  Accuracy: 85.84%
+  AURC: 81.39
+  E-AURC: 70.85
+  AUPR: 40.97
+  FPR-95: 67.80
+  ECE: 2.92
+  NLL: 5.98
+  Brier: 23.74
+
+Local Global Results(loss changed):
+------------------------------------------------------------
+Best Accuracy: Epoch 294
+  Accuracy: 85.84%
+  AURC: 81.39
+  E-AURC: 70.85
+  AUPR: 40.97
+  FPR-95: 67.80
+  ECE: 2.92
+  NLL: 5.98
+  Brier: 23.74
+
+================================================================================
+COMPOSITE SCORE ANALYSIS
+================================================================================
+
+Finding epoch with best overall balance (highest accuracy + lowest avg of other metrics):
+------------------------------------------------------------
+
+Local Train - Best Balanced Epoch 288:
+  Composite Score: 52.45
+  Accuracy: 84.98%
+  Avg Uncertainty: 32.53
+
+Global Train - Best Balanced Epoch 288:
+  Composite Score: 50.06
+  Accuracy: 84.40%
+  Avg Uncertainty: 34.34
+
+Local Global - Best Balanced Epoch 163:
+  Composite Score: 53.04
+  Accuracy: 84.76%
+  Avg Uncertainty: 31.72
+
+Local Nystrom - Best Balanced Epoch 158:
+  Composite Score: 52.86
+  Accuracy: 85.22%
+  Avg Uncertainty: 32.36
+
+Local Global Results(loss changed) - Best Balanced Epoch 163:
+  Composite Score: 53.04
+  Accuracy: 84.76%
+  Avg Uncertainty: 31.72
