@@ -19,10 +19,6 @@ Key files (repo content)
   - loss.py
   - config.yaml
 
-Do you need a Table of Contents?
-- Not necessary right now: the repo is small and file names are clear.
-- Add a TOC only if you expand README with many sections (experiments, multiple examples, long troubleshooting). A short file list is sufficient.
-
 Quick start
 1. Create environment:
    python -m venv venv
@@ -37,24 +33,6 @@ Quick start
 What to record after a run
 - Save train.log, result.log, and the used config.yaml to a folder under `experiments/<run-id>/`.
 - Populate `experiments/results.md` with summarized metrics (Accuracy, AURC, E-AURC, AUPR, FPR95, ECE, NLL, Brier), config used, and commands.
-
-Recommended minimal README additions (optional)
-- Example command lines per script.
-- Short explanation of loss functions (compute_kld_labeled, compute_kld_unlabeled).
-- How to reproduce a run (seed, GPU env var, config snapshot).
-
-If you want, I can:
-- Add short example command lines per script into this README.
-- Generate an experiments/README template for recording runs.
-- Insert a one-line table of contents — tell me which option you prefer.
-- pillow
-
-Example install:
-  python -m venv venv
-  source venv/bin/activate
-  pip install torch torchvision numpy scikit-learn pyyaml pillow
-
-(Optionally create a requirements.txt with pinned versions.)
 
 Configuration (config.yaml)
 The project reads hyperparameters and paths from `config.yaml`. Key fields:
@@ -80,6 +58,35 @@ unlabeled_limit: 50000
 gpus: "0"
 save_folder: "./checkpoints"
 ```
+## Dataset Download (CIFAR-10 – Preprocessed)
+
+This project uses **preprocessed CIFAR-10 splits** (labeled / unlabeled) following the
+setup used in the ICLR 2023 paper *“Confidence Estimation Using Unlabeled Data”*.
+
+The dataset (NumPy `.npy` files) can be downloaded from Google Drive:
+
+👉 **Download link:**  
+https://drive.google.com/file/d/1WpWVMyn8qEcKT77DIZAyMqcogJNhjVha/view
+
+### Contents of the downloaded archive
+After extracting, place the files under:
+./cifar10_data/
+
+Expected files:
+- `img_labeled_<label_size>.npy`
+- `ann_labeled_<label_size>.npy`
+- `img_unlabeled_<label_size>.npy`
+- `ann_unlabeled_<label_size>.npy`
+- `img_test.npy`
+- `ann_test.npy`
+
+where `<label_size>` ∈ {1000, 2500, 5000, 10000} depending on the experiment.
+
+### Notes
+- The labeled/unlabeled splits are **fixed** to ensure reproducibility.
+- These files are directly compatible with `loader.py`.
+- No additional preprocessing is required once the files are placed in `./cifar10_data/`.
+
 
 Data preparation
 - Place CIFAR-10 arrays in `./cifar10_data/` as expected by loader.py:
